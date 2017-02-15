@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+// 入口文件可以没有后缀名，里面用commaner，lib的索引
+var program = require('commander');
+// 读取package.json里面的版本号
+var version = require('../package.json').version;
+// 引入自己写的模块
+var run = require('../lib/main');
+program
+	// 命令行工具注册版本号
+  .version('0.0.1')
+  // 命令行工具注册命令
+  .option('-i, --init', '指定地址生成目录文档')
+  // 使用方法的提示
+  .usage('-i(--init) 相对路径或绝对路径')
+  // 解析路径上有用的参数，命令选项不算参数！！
+  .parse(process.argv);
+
+// 上面所有注册所有的命令和用法进行提示说明，在没有按照命令和使用说明--使用时
+if (program.args.length === 0) {
+	program.help();
+} 
+// // 执行-l, --local 后面有参数的还---命令的执行函数
+// else if(program.local) {
+	
+//   run(program.args[0]);
+// }
+// // 执行-h, --hexo 后面有参数的还---命令的执行函数
+// else if(program.hexo) {
+//   run(program.args[0]);
+// }
+// 按照使用方法进行 文件路径为参数的执行函数
+else {
+  run(program.args[0]);
+}
