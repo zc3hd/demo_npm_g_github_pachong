@@ -1,0 +1,342 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>详情页</title>
+<style>
+
+body {
+font-family: Tahoma;
+font-size: 10pt;
+/*line-height: 170%;*/
+padding-top: 10px;
+margin:0px;
+}
+/*------------------------------------------------------------侧边导航*/
+nav {
+background: gray;
+color: white;
+text-decoration: none;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 200px;
+}
+nav a {
+	text-decoration: none;
+	color: white;
+}
+/*-------------------------------------------------------------标头*/
+@keyframes move {
+	0% {
+		text-shadow: 5px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateY(0deg);
+	}
+	25% {
+		text-shadow: 20px 0px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateY(40deg);
+	}
+	50% {
+		text-shadow: 5px 0px 5px rgba(0,0,0,.5);
+		transform: perspective(2000px) rotateY(0deg);
+	}
+	75% {
+		text-shadow: -20px 0px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateY(-40deg);
+	}
+	100% {
+		text-shadow: 5px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateY(0deg);
+	}
+}
+
+@keyframes moveX {
+	0% {
+		text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateX(0deg);
+	}
+	25% {
+		text-shadow: 0px 10px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateX(30deg);
+	}
+	50% {
+		text-shadow: 0px 0px 5px rgba(0,0,0,.5);
+		transform: perspective(2000px) rotateX(0deg);
+	}
+	75% {
+		text-shadow: 0px 10px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateX(-30deg);
+	}
+	100% {
+		text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateX(0deg);
+	}
+}
+
+
+header {
+padding-top: 10px;
+padding-left: 220px;
+font-size: 18px;
+position: absolute;
+/*margin-bottom:30px;*/
+text-shadow: 5px 0px 3px rgba(0,0,0,.3);
+color: black;
+}
+
+header h1 {
+	
+	margin:0px;
+	padding: 0px;
+	animation: move 6s forwards infinite;
+}
+/*----------------------------------------------------------主题*/
+article {
+margin-top: 80px;
+padding-left: 220px;
+}
+
+@keyframes imgMoveOver {
+	0% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		transform: scale(1) ;
+	}
+	100% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		/*transform: perspective(2000px) rotateY(30deg);*/
+		transform: scale(1.01) translateY(-2%);
+	}
+}
+
+@keyframes imgMoveOut {
+	0% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		
+		transform: scale(1.1) translateY(-5%);
+	}
+	100% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		/*transform: perspective(2000px) rotateY(30deg);*/
+		transform: scale(1) ;
+	}
+}
+
+img {
+	/*position: relative;*/
+	width: 900px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: Orange;
+	transform-origin:left top;
+}
+img:hover {
+	animation: imgMoveOver 0.5s forwards;
+}
+/*段落*/
+h3,h4{
+	/*background-color: rgba(0,0,0,.3);*/
+	background-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.2) 75%, white 100%);
+/*	width: 500px;*/
+	color: white;
+	font-size: 22px;
+	padding-left: 10px;
+}
+h4{
+	width: 50%;
+	font-size: 18px;
+	margin-left: 5px;
+}
+pre {
+	background-color: black;
+}
+pre code {
+	color: yellow;
+	font-size: 16px;
+	font-weight: 500;
+}
+/*---------------------------------------------------------底部*/
+footer {
+padding-top: 10px;
+padding-left: 220px;
+padding-bottom: 10px;
+background-color: black;
+color: white;
+}
+footer h3 {
+	color: white;
+	background-color:transparent;
+	background-image: linear-gradient(to right, black 0%,  black 100%);
+}
+</style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li class="level3"><a href="#0.1">1.运行下载</a></li><li class="level3"><a href="#0.2">2.特别注意</a></li><li class="level3"><a href="#0.3">3.需三方包</a></li><li class="level3"><a href="#0.4">4.爬虫思路</a></li><li class="level4"><a href="#0.4.1">4.1读取文件</a></li><li class="level4"><a href="#0.4.2">4.2读取github仓储</a></li><li class="level3"><a href="#0.5">5.其他说明</a></li><li class="level3"><a href="#0.6">开源协议</a></li></ul>
+
+</nav>
+
+<header>
+<h1 id="npm-g-github-md-">npm -g 配合博客自动爬github上仓储自动生成我需要的md文件</h1>
+
+</header>
+
+<article>
+<h3 id="0.1">1.运行下载</h3>
+<ul>
+<li>git clone 本存储地址</li>
+<li>npm install</li>
+<li>全局命令 cc-pac -i ./(相对路径或绝对路径)</li>
+</ul>
+<h3 id="0.2">2.特别注意</h3>
+<ul>
+<li>命令行输入绝对路径分隔符要注意为双反斜杠   \</li>
+</ul>
+<h3 id="0.3">3.需三方包</h3>
+<ul>
+<li>bluebird：promise的利器</li>
+<li>fs-extra：这里其实没有用这个包的拓展API，用习惯了就把这个也用上了。</li>
+<li>cheerio：读取到文件内容包装为一个大DOM，进行各种DOM的类JQ操作</li>
+</ul>
+<h3 id="0.4">4.爬虫思路</h3>
+<h4 id="0.4.1">4.1读取文件</h4>
+<ul>
+<li>路径那个地方提供两个参数，相对路径和绝对路径，为了加快文件的生成，也为了避免重复生成文件</li>
+<li>首先读取指定路径下的文件信息，把读取到的信息挂载到全局变量上。</li>
+</ul>
+<pre><code>function fetchPage(argv_path) {
+  this.path = argv_path;
+  //设置全局变量
+  this.dir_files = [];
+}
+---------------------------------------------------
+init: function() {
+    var me = this;
+
+    me.read_dir()
+      .then(function(arr) {
+        //挂载到全局变量上
+        me.dir_files = arr;
+        console.log(arr);
+        me.get_gitpages()
+      })
+},
+</code></pre><h4 id="0.4.2">4.2读取github仓储</h4>
+<ul>
+<li>代码实现：</li>
+</ul>
+<pre><code>  get_gitpages: function() {
+    /* body... */
+    var me = this;
+    return new Promise(function(resolve, reject) {
+      http.get(config.url, function(res) {
+        var html = &#39;&#39;; //用来存储请求网页的整个html内容
+        res.setEncoding(&#39;utf-8&#39;); //防止中文乱码
+
+        res.on(&#39;data&#39;, function(chunk) {
+          html += chunk;
+        });
+
+        res.on(&#39;end&#39;, function() {
+          var $ = cheerio.load(html); //采用cheerio模块解析html
+          var urls = $(&#39;div.js-repo-list&gt;li&#39;);
+          console.log(&#39;github库存信息读取成功--&#39;)
+
+          var falg = null;
+          for (var i = 0; i &lt; urls.length; i++) {
+            // 文件名
+            var name = $(urls[i]).find(&#39;div.d-inline-block a&#39;).text().trim();
+
+            // 信息
+            var title = $(urls[i]).find(&#39;p.d-inline-block&#39;).text().trim();
+            var tags = $(urls[i]).find(&#39;div.text-gray span.mr-3&#39;).text().trim();
+            var time = $(urls[i]).find(&#39;div.text-gray relative-time&#39;).attr(&#39;datetime&#39;);
+            time = me.handle_time(time);
+            var info = &#39;---&#39; + &#39;\n&#39; +
+              &#39;title: &#39; + title + &#39;\n&#39; +
+              &#39;tags: &#39; + tags + &#39;\n&#39; +
+              &#39;date: &#39; + time + &#39;\n&#39; +
+              &#39;---&#39; + &#39;\n&#39; +
+              &#39;[点击阅读](https://zc3hd.github.io/&#39; + name + &#39;)&#39;;
+
+            // 前面是demo的才进行处理
+            if (name.substr(0, 4) == &#39;demo&#39;) {
+              falg = me.dir_files.indexOf(name+&#39;.md&#39;);
+              me.indexOfDir(falg, { name: name, info: info });
+            }
+          }
+
+        });
+
+      }).on(&#39;error&#39;, function(err) {
+        reject(err);
+      });
+    });
+  },
+</code></pre><ul>
+<li>可以看到上面这个请求我用promise进行了包装。但是判断是否存在文件，和生成新的文件都在变量的里面执行了。这里我是遇到了坑。简单讲就是闭包。</li>
+</ul>
+<p><img src="./webapp/readme_img/001.jpg" alt=""></p>
+<ul>
+<li>本来我是要把收集到name(文件名)，info(文件内容)在循环的时候组成一个对象，推到一个数组中，我上面的获取指定路径下的文件信息也是promise包装的。我原来想着是用promise.all()方法收集两个异步回来的数据。这里有坑。收集数据和文件信息都没有问题。但是收集到仓储的数据就是最后一组数据多次重复。我开始以为是组对象的组装错误，后来发现是闭包的原因。因为我在循环遍历的时候，urls[i]的是一个对象，当遍历完成后，i成为length-1,所有的对象指向都是最后一个对象的数据。故resolve（组装好的数组），这个数组就全部是最后一组数据组成的大数组。</li>
+<li>所以我需要在闭包内部就判断有没有在当前文件下就存在这个文件，及形成新的文件。而且生成文件这里是同步生成。</li>
+</ul>
+<p><img src="./webapp/readme_img/002.jpg" alt=""></p>
+<h3 id="0.5">5.其他说明</h3>
+<ul>
+<li>包没有注册，但并不妨碍你使用。</li>
+<li>这里有个配置文件，可以直接当别人写的所有的仓储，但是不能保证可以使用。需要自己改我的源码</li>
+</ul>
+<p><img src="./webapp/readme_img/003.jpg" alt=""></p>
+<ul>
+<li>为什么我的可以使用？因为我本地项目基本都有gh-pages的展示分支，而我的博客里面.md文件都是一个标题夹一个连接内容，其实这样自己感觉也对。我可以分开管理每个项目，又简单集成到博客上，然后每个项目的展示页都可以回到主页。所以这也就是我昨天写的那个自动生成gh-pages项目的全局的包的目的。</li>
+<li>爬虫生成的目录和我博客里要的内容</li>
+</ul>
+<p><img src="./webapp/readme_img/004.jpg" alt=""></p>
+<ul>
+<li><a href="https://zc3hd.github.io/demo_npm_g_pre_gitpages/">自动生成gh-pages项目全局命令包的学习</a></li>
+</ul>
+
+</article>
+<footer>
+<h3 id="0.6">开源协议</h3>
+<p>本程序基于MIT协议开源。</p>
+<pre><code>Copyright (c) cc.
+</code></pre>
+</footer>
+</body>
+
+<script>
+	var div = document.createElement("div"); 
+	var body = document.getElementsByTagName('body')[0];
+	console.log(body);
+div.id = 'back_index';	
+div.style.width = '200px';
+div.style.height = '200px';
+div.style.backgroundImage = "url(./back_index.png)";
+div.style.backgroundSize = 'cover';
+div.style.position = 'fixed';
+div.style.left = '0px';
+div.style.bottom = '20px';
+body.appendChild(div);
+document.write(div);
+div.onmouseover = function () {
+	/* body... */
+	div.style.animation = 'imgMoveOver 0.5s forwards';
+};
+div.onmouseout = function () {
+	/* body... */
+	div.style.animation = 'imgMoveOut 0.5s forwards';
+};
+div.onclick = function () {
+	/* body... */
+	window.location.href = "https://zc3hd.github.io/";
+};
+
+</script>
+
+</html>
